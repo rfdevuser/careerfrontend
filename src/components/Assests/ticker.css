@@ -1,0 +1,70 @@
+.hmove { display: flex; }
+.hitem { width: 100%; flex-shrink: 0; }
+.hwrap { overflow: hidden; }
+
+/* (A2) MOVE ITEMS FROM RIGHT TO LEFT */
+/* first item = 0, fourth item = -300% */
+@keyframes tickerh {
+  0% { transform: translatex(100%); }
+  100% { transform: translatex(-400%); }
+}
+.hmove { animation: tickerh linear 50s infinite; }
+.hmove:hover { animation-play-state: paused; }
+@media screen and (max-width: 768px) {
+  .hmove { animation: tickerh linear 20s infinite; }
+}
+/* (A3) COSMETICS - NOT IMPORTANT */
+.hwrap {
+  font-family: "Courier New", Courier, monospace;
+  color: #000;
+  background: #ec4899;
+  max-width: 100%; /* highly recommended */
+}
+.hitem { 
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+.hwrap, .hwrap * { box-sizing: border-box; }
+
+/* Reduce margin between title and ticker */
+#cbtitle {
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+/* Reduce margin between ticker and information section */
+#cbinfo {
+  margin-top: 10px; /* Adjust as needed */
+}
+
+/* (X) NOT IMPORTANT */
+
+#cbwrap{
+  background:transparent;
+  width:100%;
+  border-radius:10px;
+  margin-top: 60px;
+}
+*{
+  box-sizing:border-box;
+  font-family:arial,sans-serif;
+}
+/* body{
+  padding:0;
+  margin:0;
+  border:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-size:cover;
+  background-position:center;
+  backdrop-filter:blur(10px);
+} */
+#cbinfo a{
+  text-decoration:none;
+  padding:5px;
+  color:#fff;
+  background:#a91616;
+}
+

@@ -1,0 +1,136 @@
+html, body {
+  overflow-x: hidden;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  background-color: white;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.feature-card:hover {
+  background: var(--black-gradient);
+  box-shadow: var(--card-shadow);
+}
+
+.feedback-card {
+  background: rgb(237, 235, 235);
+}
+
+/* .feedback-card:hover {
+  background: var(--black-gradient);
+} */
+
+.bg-blue-gradient {
+  background: linear-gradient(
+    157.81deg,
+    #def9fa -43.27%,
+    #bef3f5 -21.24%,
+    #9dedf0 12.19%,
+    #7de7eb 29.82%,
+    #5ce1e6 51.94%,
+    #33bbcf 90.29%
+  );
+}
+
+.slider-container {
+  @apply w-full;
+}
+.slick-dots {
+  background-color: white;
+}
+
+/* TICKER START */
+.hmove { display: flex; }
+.hitem { width: 100%; flex-shrink: 0; }
+.hwrap { overflow: hidden; }
+
+/* (A2) MOVE ITEMS FROM RIGHT TO LEFT */
+/* first item = 0, fourth item = -300% */
+@keyframes tickerh {
+  0% { transform: translatex(100%); }
+  100% { transform: translatex(-400%); }
+}
+.hmove { animation: tickerh linear 50s infinite; }
+.hmove:hover { animation-play-state: paused; }
+@media screen and (max-width: 768px) {
+  .hmove { animation: tickerh linear 20s infinite; }
+}
+/* (A3) COSMETICS - NOT IMPORTANT */
+.hwrap {
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  background: #831843;
+  max-width: 100%; /* highly recommended */
+}
+.hitem { 
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+.hwrap, .hwrap * { box-sizing: border-box; }
+
+/* Reduce margin between title and ticker */
+#cbtitle {
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+/* Reduce margin between ticker and information section */
+#cbinfo {
+  margin-top: 10px; /* Adjust as needed */
+}
+
+/* (X) NOT IMPORTANT */
+
+#cbwrap{
+  background:transparent;
+  width:100%;
+  border-radius:10px;
+  margin-top: 60px;
+}
+*{
+  box-sizing:border-box;
+  font-family:arial,sans-serif;
+}
+/* body{
+  padding:0;
+  margin:0;
+  border:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-size:cover;
+  background-position:center;
+  backdrop-filter:blur(10px);
+} */
+#cbinfo a{
+  text-decoration:none;
+  padding:5px;
+  color:white;
+  background:#a91616;
+}
+
+/* TICKER END */
+
+
