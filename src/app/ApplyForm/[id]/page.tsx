@@ -49,7 +49,7 @@ const ApplyForm = ({ params }: { params: { id: string } }) => {
         
         // Restrict to 8 years for specific job IDs
         if (['RF-GA0824', 'RF-MD0824'].includes(params.id) && value !== '' && parseInt(value, 10) > 8) {
-          alert('Please note that this position requires less than 8 years of experience.');
+          alert('Thanks for your interest in our job Opportunity . This job is best suited for candidates with relevant experience up to 8 years');
           return;
         }
 
