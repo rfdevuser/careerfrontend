@@ -90,7 +90,7 @@ const QuestionPage = ({ params }: { params: { id: string } }) => {
 
   // Mutation hook to execute the mutation
   const [addCandidate, { loading: mutationLoading }] = useMutation(ADD_CANDIDATE_RESPONSE_MUTATION);
-
+  
   // Function to handle input changes in the form
   const handleInputChange = (e:any) => {
     const { name, value, type, checked, files } = e.target;
@@ -278,6 +278,7 @@ const QuestionPage = ({ params }: { params: { id: string } }) => {
           <input
         type="file"
         required
+        accept=".pdf"
         onChange={(event) => {
           if (event.target.files && event.target.files.length > 0) {
             setImageUpload(event.target.files[0]);
