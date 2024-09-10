@@ -1,5 +1,5 @@
 "use client"
-import { useMutation, useQuery } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { SINGLEJOBRESULT } from "@/utils/gql/GQL_QUERIES";
 import { ADD_CANDIDATE_RESPONSE_MUTATION } from "@/utils/gql/GQL_MUTATION";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -64,6 +64,28 @@ const QuestionPage = ({ params }: { params: { id: string } }) => {
     variables: { job_id: jobID },
   });
 
+console.log(contactNumber)
+  const { data: candidateJobsData, loading: candidateJobsLoading, error: candidateJobsError } = useQuery(
+    gql`
+      query CandidateJobsByContactNumber($contactNumber: String!) {
+        candidateJobsByContactNumber(contactNumber: $contactNumber)
+      }
+    `,
+    {
+      variables: { contactNumber },
+    }
+  );
+  console.log(candidateJobsData)
+  useEffect(() => {
+    if (candidateJobsData && candidateJobsData.candidateJobsByContactNumber) {
+      const jobIDs = candidateJobsData.candidateJobsByContactNumber;
+
+      if (jobIDs.includes(jobID || '')) {
+        alert('You have already applied for this job.Our team is currently reviewing submissions, and we will reach out to you if you are selected for further consideration.');
+        router.push('/');
+      }
+    }
+  }, [candidateJobsData, jobID, router]);
   const [submitting, setSubmitting] = useState(false);
   // State to manage form data
   const [formData, setFormData] = useState({
@@ -194,21 +216,7 @@ const QuestionPage = ({ params }: { params: { id: string } }) => {
       if (submitButton) submitButton.disabled = true;
     }
   };
-  // if (mutationLoading) {
-  //   // Show loader or shimmer effect while data is being fetched
-  //   return (
-  //     <div className="container mx-auto p-4 flex justify-center">
-  //       <Watch
-  // visible={true}
-  // height="80"
-  // width="80"
-  // radius="48"
-  // color="#500724"
-  // ariaLabel="watch-loading"
-  // wrapperStyle={{}}
-  // wrapperClass=""
-  // />
-  //    
+  
 
   if (loading) {
     // Show loader or shimmer effect while data is being fetched

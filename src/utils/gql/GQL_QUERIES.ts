@@ -47,3 +47,10 @@ query MyQuery {
   tickerInfo
 }
 `;
+
+
+export const CANDIDATE_JOBS_BY_CONTACT = gql`
+  query CandidateJobsByContactNumber($contactNumber: String!) {
+    candidateJobsByContactNumber(contactNumber: $contactNumber)
+  }
+`;
