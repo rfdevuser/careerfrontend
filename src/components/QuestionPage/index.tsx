@@ -82,7 +82,7 @@ console.log(contactNumber)
 
       if (jobIDs.includes(jobID || '')) {
         alert('You have already applied for this job.Our team is currently reviewing submissions, and we will reach out to you if you are selected for further consideration.');
-        router.push('/');
+        window.location.href = '/';
       }
     }
   }, [candidateJobsData, jobID, router]);
@@ -205,7 +205,7 @@ console.log(contactNumber)
         resume: '',
         consent: false,
       });
-      router.push('/');
+      window.location.href = '/';
     } catch (error) {
       console.error('Form submission failed:', error);
       alert('Error submitting form. Please try again later.');
