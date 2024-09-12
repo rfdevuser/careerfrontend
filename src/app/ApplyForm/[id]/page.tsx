@@ -189,19 +189,40 @@ const ApplyForm = ({ params }: { params: { id: string } }) => {
             />
           </div>
           <div className="mb-4">
+       
             <label htmlFor="contactNumber" className="block font-medium mb-1 flex justify-center mt-6 mb-6 text-xl">
               <b>Contact Number</b><span className="text-red-500">*</span>
             </label>
-            <input
-              type="text"
-              id="contactNumber"
-              name="contactNumber"
-              placeholder='Enter Your Contact Number'
-              value={formData.contactNumber}
-              onChange={handleChange}
-              required
-              className="w-1/2 px-3 py-2 border border-gray-400 rounded-md mx-auto block"
-            />
+            
+            <div className="w-1/2 mx-auto flex">
+  <span className="flex items-center px-3 py-2 border border-gray-400 rounded-l-md bg-white text-gray-500">
+    +91
+  </span>
+  <input
+    type="text"
+    id="contactNumber"
+    name="contactNumber"
+    placeholder="Enter Your Contact Number (10 digits)"
+    value={formData.contactNumber}
+    onChange={(e) => {
+      // Only allow digits and restrict to 10 digits
+      const newValue = e.target.value.replace(/\D/g, '');
+      if (newValue.length <= 10) {
+        setFormData((prevData) => ({
+          ...prevData,
+          contactNumber: newValue,
+        }));
+      }
+    }}
+    maxLength={10}
+    required
+    className="flex-1 px-3 py-2 border border-gray-400 rounded-r-md"
+  />
+
+
+</div>
+
+
           </div>
           <div className="mb-4">
             <label htmlFor="currentCity" className="block font-medium mb-1 flex justify-center mt-6 mb-6 text-xl">
